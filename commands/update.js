@@ -72,7 +72,7 @@ class UpdateCommand extends Command {
     }
 
     console.log();
-    console.log(colors.bold.green(`Up to date!`) + ` All of your ${colors.bold.green('Instant.bot Package')} dependencies are up to date.`);
+    console.log(colors.bold.green(`Up to date!`) + ` All of your ${colors.bold.green('Superuser Package')} dependencies are up to date.`);
     console.log();
 
     return void 0;

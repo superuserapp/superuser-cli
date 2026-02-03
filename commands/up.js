@@ -19,7 +19,7 @@ const DEFAULT_IGNORE = [
   '.git',               // do not deploy git history
   '.DS_Store',          // do not deploy macOS files
   'package-lock.json',  // deps installed from package.json
-  'serve.instant.js'     // not used by Instant.bot Package Registry; irrelevant
+  'serve.instant.js'     // not used by Superuser Package Registry; irrelevant
 ];
 
 function formatSize (size) {
@@ -81,7 +81,7 @@ class UpCommand extends Command {
 
   help () {
     return {
-      description: 'Deploys your project to the Instant.bot Package Registry',
+      description: 'Deploys your project to the Superuser Package Registry',
       args: [],
       flags: {
         v: 'Verbose mode; print full details of packaging'
@@ -107,10 +107,10 @@ class UpCommand extends Command {
     let packageJSON;
 
     try {
-      functJSON = require(path.join(process.cwd(), 'instant.package.json'));
+      functJSON = require(path.join(process.cwd(), 'superuser.json'));
     } catch (e) {
       console.error(e);
-      console.error(new Error('Invalid "instant.package.json" in this directory'));
+      console.error(new Error('Invalid "superuser.json" in this directory'));
       process.exit(1);
     }
 

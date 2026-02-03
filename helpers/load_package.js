@@ -11,11 +11,11 @@ module.exports = async (params = null, validate = false) => {
   }
 
   let toolpkg;
-  const toolPathname = path.join(process.cwd(), 'instant.package.json');
+  const toolPathname = path.join(process.cwd(), 'superuser.json');
   if (!fs.existsSync(toolPathname)) {
     if (validate) {
       throw new Error(
-        `No "instant.package.json" in this directory. Are you sure you meant to do this?\n` +
+        `No "superuser.json" in this directory. Are you sure you meant to do this?\n` +
         `Run \`$ ibot init\` to initialize a project here if you are.`
       );
     }
@@ -28,7 +28,7 @@ module.exports = async (params = null, validate = false) => {
   if (!fs.existsSync(dotenvPathname)) {
     if (validate) {
       throw new Error(
-        `dotenv should be installed in this directory to use Instant.bot Package locally.\n` +
+        `dotenv should be installed in this directory to use Superuser Package locally.\n` +
         `Run \`$ npm i dotenv --save-dev\` to install the latest version`
       );
     }
@@ -41,7 +41,7 @@ module.exports = async (params = null, validate = false) => {
   if (!fs.existsSync(pathname)) {
     if (validate) {
       throw new Error(
-        `@instant.dev/api should be installed in this directory to use Instant.bot Package locally.\n` +
+        `@instant.dev/api should be installed in this directory to use Superuser Package locally.\n` +
         `Run \`$ npm i @instant.dev/api --save-dev\` to install the latest version`
       );
     }

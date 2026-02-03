@@ -57,7 +57,7 @@ class InitCommand extends Command {
 
   help () {
     return {
-      description: 'Initialize a new Instant.bot Package project',
+      description: 'Initialize a new Superuser Package project',
       args: [],
       flags: {},
       vflags: {
@@ -74,15 +74,15 @@ class InitCommand extends Command {
     console.log(
       drawBox.center(
         `blue`,
-        `Welcome to ${colors.bold.green('🤖 Instant.bot')}!`,
+        `Welcome to ${colors.bold.green('🤖 Superuser')}!`,
       )
     );
 
     const pkgExists = fs.existsSync('package.json');
-    const functExists = fs.existsSync('instant.package.json');
+    const functExists = fs.existsSync('superuser.json');
 
     console.log();
-    console.log(`🪄 You are about to initialize an ${colors.bold('Instant.bot Package')} in the current directory:`)
+    console.log(`🪄 You are about to initialize an ${colors.bold('Superuser Package')} in the current directory:`)
     console.log(`   📂 ${colors.dim(process.cwd())}`);
     console.log();
     if ((pkgExists || functExists) && !force) {
@@ -178,8 +178,8 @@ class InitCommand extends Command {
     writeInitFiles(filesRoot);
     // Write package.json: make sure no publish to npm
     fileWriter.writeJSON('package.json', 'private', true);
-    // Write instant.package.json: default is public
-    fileWriter.writeJSON('instant.package.json', 'name', functName);
+    // Write superuser.json: default is public
+    fileWriter.writeJSON('superuser.json', 'name', functName);
 
     // Now we reload InstantPackage to verify
     InstantPackage = await loadPackage(null, true);
@@ -199,8 +199,8 @@ class InitCommand extends Command {
         `(2) Run your dev server:`,
         colors.grey.bold(`     $ ibot serve`),
         ``,
-        `For more information about ${colors.bold(`Instant.bot`)}:`,
-        `     Home    => ${colors.bold.underline.blue('https://instant.bot')}`,
+        `For more information about ${colors.bold(`Superuser`)}:`,
+        `     Home    => ${colors.bold.underline.blue('https://instant.chat')}`,
         `     GitHub  => ${colors.bold.underline.blue('https://github.com/instantbots')}`,
         `     Discord => ${colors.bold.underline.blue('https://discord.gg/instant')}`,
         `     X       => ${colors.bold.underline.blue('https://x.com/instantbots')}`,

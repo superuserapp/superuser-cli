@@ -6,7 +6,7 @@ module.exports = {
   run: ({port = null, isBackground = false} = {}) => {
     const consoleLog = (...args) => !isBackground && console.log(...args);
     consoleLog();
-    consoleLog(`Running ${colors.green.bold('Instant.bot Package')} development server ...`);
+    consoleLog(`Running ${colors.green.bold('Superuser Package')} development server ...`);
     const pkgExists = fs.existsSync('package.json');
     if (pkgExists) {
       let pkg;

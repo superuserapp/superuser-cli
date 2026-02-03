@@ -1,7 +1,7 @@
 {
-  "name": "ibot",
-  "version": "0.0.2",
-  "description": "Instant.bot Package Manager: CLI for the Instant.bot Package Registry",
+  "name": "superuser",
+  "version": "0.0.0",
+  "description": "Superuser package manager: command line interface for building toolkits for your agents",
   "main": "index.js",
   "files": [
     "/commands",
@@ -12,7 +12,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "bin": {
-    "ibot": "index.js"
+    "sup": "index.js"
   },
   "author": "Keith Horwood",
   "license": "MIT",

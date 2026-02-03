@@ -17,13 +17,13 @@ module.exports = async (print = false) => {
   }
   const packages = [
     {
-      title: 'Instant.bot Package CLI',
+      title: 'Superuser Package CLI',
       name: pkgs.self.name,
       version: pkgs.self.version,
       global: true
     },
     {
-      title: 'Instant.bot Package Gateway (Instant API)',
+      title: 'Superuser Package Gateway (Instant API)',
       name: pkgs.api ? pkgs.api.name : null,
       version: pkgs.api ? pkgs.api.version : null,
       dev: true
