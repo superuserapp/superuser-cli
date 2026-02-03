@@ -14,7 +14,7 @@ class LoginCommand extends Command {
 
   help () {
     return {
-      description: 'Login to the Superuser Package Registry',
+      description: 'Login to the Superuser package registry',
       args: [],
       flags: {},
       vflags: {

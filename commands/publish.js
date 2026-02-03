@@ -19,7 +19,7 @@ const DEFAULT_IGNORE = [
   '.git',               // do not deploy git history
   '.DS_Store',          // do not deploy macOS files
   'package-lock.json',  // deps installed from package.json
-  'serve.instant.js'     // not used by Superuser Package Registry; irrelevant
+  'serve.instant.js'     // not used by Superuser package registry; irrelevant
 ];
 
 function formatSize (size) {
@@ -76,12 +76,12 @@ function readFiles (base, properties, dir, data) {
 class UpCommand extends Command {
 
   constructor() {
-    super('up');
+    super('publish');
   }
 
   help () {
     return {
-      description: 'Deploys your project to the Superuser Package Registry',
+      description: 'Deploys your toolkit to the Superuser package registry',
       args: [],
       flags: {
         v: 'Verbose mode; print full details of packaging'

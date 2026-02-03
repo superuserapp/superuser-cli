@@ -61,7 +61,7 @@ function readSettings (validate = false) {
     i++;
   }
   if (validate && !profileList[0]) {
-    throw new Error(`You are not logged in. Try \`ibot login\` to log in first.`);
+    throw new Error(`You are not logged in. Try \`sup login\` to log in first.`);
   }
   return {
     activeProfile: profileList[0],

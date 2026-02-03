@@ -14,9 +14,9 @@ major features;
 3. Write your own private tool packages for your agents
 4. Deploy your agent to third-party services like Discord and Slack
 
-## What is the Superuser Package Registry?
+## What is the Superuser package registry?
 
-The Superuser Package Registry is a **serverless hosting platform and registry** for
+The Superuser package registry is a **serverless hosting platform and registry** for
 building tools that extend AI chatbots and agents.
 
 **Superuser packages are just REST API servers.**
@@ -49,19 +49,19 @@ Creating a new bot is easy, you can then use this CLI to develop
 and publish custom packages to extend your bots.
 
 ```shell
-$ npm i ibot -g
+$ npm i sup -g
 $ mkdir new-project
 $ cd new-project
-$ ibot init  # initialize project in this directory
-$ ibot login # log in to Superuser Package Registry with your Superuser account
-$ ibot serve # run your tool package on a local server to test
-$ ibot run / # test a single endpoint (like curl)
-$ ibot up    # publish to development environment
-$ ibot up --env staging    # publish to staging environment
-$ ibot up --env production # publish to production environment
+$ sup init  # initialize project in this directory
+$ sup login # log in to Superuser package registry with your Superuser account
+$ sup serve # run your tool package on a local server to test
+$ sup run / # test a single endpoint (like curl)
+$ sup up    # publish to development environment
+$ sup up --env staging    # publish to staging environment
+$ sup up --env production # publish to production environment
 ```
 
-You can run `ibot help` at any time to see available commands.
+You can run `sup help` at any time to see available commands.
 
 # Table of contents
 
@@ -90,7 +90,7 @@ Tool packages are REST APIs that can be used by your agent. You can publish tool
 for use by your agent and others or keep them private.
 
 When you ask your agent a question that requires a tool call, Superuser will
-automatically route the request to the appropriate tool from the Superuser Package Registry
+automatically route the request to the appropriate tool from the Superuser package registry
 and call the tool on your behalf.
 
 ## How is hosting billed?
@@ -121,10 +121,10 @@ working with your own editor, you can use this CLI.
 To initialize a new Superuser package:
 
 ```shell
-$ npm i ibot -g
+$ npm i sup -g
 $ mkdir new-project
 $ cd new-project
-$ ibot init
+$ sup init
 ```
 
 You'll be walked through the process. The `ibot` CLI will automatically check for
@@ -132,13 +132,13 @@ updates to core packages, so make sure you update when available. To play around
 Superuser package locally;
 
 ```shell
-$ ibot serve
+$ sup serve
 ```
 
 Will start an HTTP server. To execute a standalone endpoint / tool:
 
 ```shell
-$ ibot run /
+$ sup run /
 ```
 
 ### Defining tools aka endpoints
@@ -147,7 +147,7 @@ Defining custom tools is easy. You'll find the terms **tool** and
 **endpoint** used interchangeably as they all refer
 to the same thing: your bot executing custom code in the cloud.
 
-A **tool** is just an **endpoint** hosted by the Superuser Package Registry.
+A **tool** is just an **endpoint** hosted by the Superuser package registry.
 
 All endpoints for Superuser packages live in the `functions/` directory.
 Each file name maps to the endpoint route e.g. `functions/hello.js`
@@ -197,14 +197,14 @@ they will be billed from their balance.
 To deploy a public project to a `development` environment, you can use:
 
 ```shell
-$ ibot up
+$ sup up
 ```
 
 You can also publish to `staging` and `production` using:
 
 ```shell
-$ ibot up --env staging
-$ ibot up --env production
+$ sup up --env staging
+$ sup up --env production
 ```
 
 ### Private packages
@@ -233,15 +233,15 @@ There are a few additional utilities you may find useful with this package;
 
 ```shell
 # generates functions/my-endpoint/example.js
-$ ibot g:endpoint my-endpoint/example
+$ sup g:endpoint my-endpoint/example
 ```
 
 ## Generate tests
 
 ```shell
 # Generate blank tests or ones for an endpoint
-$ ibot g:test my_test # OR ...
-$ ibot g:test --endpoint my-endpoint/example
+$ sup g:test my_test # OR ...
+$ sup g:test --endpoint my-endpoint/example
 ```
 
 ## Run tests
@@ -249,7 +249,7 @@ $ ibot g:test --endpoint my-endpoint/example
 You can write tests for your tools to verify they work. Simply run;
 
 ```shell
-$ ibot test
+$ sup test
 ```
 
 And voila!

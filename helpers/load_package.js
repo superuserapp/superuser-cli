@@ -16,7 +16,7 @@ module.exports = async (params = null, validate = false) => {
     if (validate) {
       throw new Error(
         `No "superuser.json" in this directory. Are you sure you meant to do this?\n` +
-        `Run \`$ ibot init\` to initialize a project here if you are.`
+        `Run \`$ sup init\` to initialize a project here if you are.`
       );
     }
   } else {

@@ -17,13 +17,13 @@ module.exports = async (print = false) => {
   }
   const packages = [
     {
-      title: 'Superuser Package CLI',
+      title: 'Superuser package manager',
       name: pkgs.self.name,
       version: pkgs.self.version,
       global: true
     },
     {
-      title: 'Superuser Package Gateway (Instant API)',
+      title: 'Superuser package gateway (Instant API)',
       name: pkgs.api ? pkgs.api.name : null,
       version: pkgs.api ? pkgs.api.version : null,
       dev: true
@@ -74,7 +74,7 @@ module.exports = async (print = false) => {
           ].join('\n')
         }),
         `Install all with:`,
-        `${colors.bold.grey(`ibot update`)}`,
+        `${colors.bold.grey(`sup update`)}`,
         ``
       )
     );

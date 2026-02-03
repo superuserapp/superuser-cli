@@ -88,7 +88,7 @@ class InitCommand extends Command {
     if ((pkgExists || functExists) && !force) {
       throw new Error(
         `You already have a project initialized here.\n` +
-        `If you want to overwrite it, use \`$ ibot init --force\``
+        `If you want to overwrite it, use \`$ sup init --force\``
       );
     } else {
       console.log(`✨ We've detected you're starting from scratch`);
@@ -195,9 +195,9 @@ class InitCommand extends Command {
         `Here are some helpful commands to get started:`,
         ``,
         `(1) Create a set of endpoints for a path (create, read, update, destroy):`,
-        colors.grey.bold(`     $ ibot g:endpoint path/to/endpoint\n`),
+        colors.grey.bold(`     $ sup g:endpoint path/to/endpoint\n`),
         `(2) Run your dev server:`,
-        colors.grey.bold(`     $ ibot serve`),
+        colors.grey.bold(`     $ sup serve`),
         ``,
         `For more information about ${colors.bold(`Superuser`)}:`,
         `     Home    => ${colors.bold.underline.blue('https://instant.chat')}`,
