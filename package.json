@@ -1,5 +1,5 @@
 {
-  "name": "superuser",
+  "name": "superuser.app",
   "version": "0.0.0",
   "description": "Superuser package manager: command line interface for building toolkits for your agents",
   "main": "index.js",
