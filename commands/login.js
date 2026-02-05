@@ -101,7 +101,10 @@ class LoginCommand extends Command {
     console.log(colors.bold(`${colors.cyan(`Logged in`)} to ${colors.green('Superuser')} successfully!`));
     console.log(`${colors.bold(`email`)}:    ${user.email}`);
     if (user.memberships && user.memberships.length) {
-      console.log(`${colors.bold(`username`)}: ${user.memberships[0].organization.name}`);
+      const membership = user.memberships.find(m => m.organization?.is_user_primary);
+      if (membership) {
+        console.log(`${colors.bold(`username`)}: ${membership.organization.name}`);
+      }
     }
     console.log(`${colors.bold(`login at`)}: ${token.created_at}`);
     console.log();

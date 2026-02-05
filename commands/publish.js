@@ -210,14 +210,15 @@ class UpCommand extends Command {
         },
         ({event, data, id}) => {
           if (event === '@response') {
-            let json;
+            let result = {};
             try {
-              json = JSON.parse(data.body);
-              data.data = json;
+              result = JSON.parse(data);
+              console.log(`got response?`, typeof result, result);
+              result.data = JSON.parse(data.body);
             } catch (e) {
               // do nothing;
             }
-            resolve(data);
+            resolve(result);
           } else if (event === 'log') {
             console.log(`${colors.bold.grey(`Deploy:`)} ${data}`);
           }
@@ -226,6 +227,7 @@ class UpCommand extends Command {
     });
 
     if (upResult.statusCode !== 200) {
+      console.log(typeof upResult, upResult);
       if (upResult.data && upResult.data.error && upResult.data.error.message) {
         throw new Error(upResult.data.error.message);
       } else {
