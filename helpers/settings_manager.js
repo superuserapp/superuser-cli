@@ -2,7 +2,7 @@ const os = require('os');
 const fs = require('fs');
 const path = require('path');
 
-const SETTINGS_FILENAME = '~/.ibotrc';
+const SETTINGS_FILENAME = '~/.surc';
 
 const parsePathname = (pathname) => {
   if (!pathname) {
