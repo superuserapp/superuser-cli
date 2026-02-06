@@ -280,17 +280,17 @@ There's a lot to build! [Superuser](https://superuser.app) is still in early bet
 - Knowledge bases
 - Much more!
 
-Submit requests via Discord at [discord.gg/instant](https://discord.gg/instant)!
+Submit requests via Discord at [discord.gg/superuser](https://discord.gg/superuser)!
 
 # Contact
 
-The best place for help and support is Discord at [discord.gg/instant](https://discord.gg/instant),
+The best place for help and support is Discord at [discord.gg/superuser](https://discord.gg/superuser),
 but feel free to bookmark all of these links.
 
 | Destination | Link |
 | ----------- | ---- |
 | Superuser | [superuser.app](https://superuser.app) |
-| GitHub | [github.com/instantbots](https://github.com/instantbots) |
-| Discord | [discord.gg/instant](https://discord.gg/instant) |
+| GitHub | [github.com/superuserapp](https://github.com/superuserapp) |
+| Discord | [discord.gg/superuser](https://discord.gg/superuser) |
 | X / instantbots | [x.com/instantbots](https://x.com/instantbots) |
 | X / Keith Horwood | [x.com/keithwhor](https://x.com/keithwhor) |
