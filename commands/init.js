@@ -200,7 +200,7 @@ class InitCommand extends Command {
         colors.grey.bold(`     $ sup serve`),
         ``,
         `For more information about ${colors.bold(`Superuser`)}:`,
-        `     Home    => ${colors.bold.underline.blue('https://instant.chat')}`,
+        `     Home    => ${colors.bold.underline.blue('https://superuser.app')}`,
         `     GitHub  => ${colors.bold.underline.blue('https://github.com/instantbots')}`,
         `     Discord => ${colors.bold.underline.blue('https://discord.gg/instant')}`,
         `     X       => ${colors.bold.underline.blue('https://x.com/instantbots')}`,

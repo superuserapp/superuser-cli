@@ -1,3 +1,3 @@
 module.exports = {
-  BASE_URL: 'https://api.instant.chat'
+  BASE_URL: 'https://api.superuser.app'
 };

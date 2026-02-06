@@ -1,16 +1,16 @@
 # Superuser Package Manager
 ## Extend AI agents with tools, instantly
 
-`ibot` is the official CLI for publishing [Superuser](https://instant.chat) packages.
+`ibot` is the official CLI for publishing [Superuser](https://superuser.app) packages.
 You can use this utility to publish new packages to the Superuser package registry,
-available at [instant.chat/packages](https://instant.chat/packages).
+available at [superuser.app/packages](https://superuser.app/packages).
 
-[Superuser](https://instant.chat) enables you to rapidly build custom
+[Superuser](https://superuser.app) enables you to rapidly build custom
 chatbots and AI agents that can be extended with custom tools. It provides four
 major features;
 
 1. Chat with and develop your agent in real time from the web
-2. Extend your agent with [hosted tool packages](https://instant.chat/packages)
+2. Extend your agent with [hosted tool packages](https://superuser.app/packages)
 3. Write your own private tool packages for your agents
 4. Deploy your agent to third-party services like Discord and Slack
 
@@ -25,7 +25,7 @@ which is a simple way to export and auto-document JavaScript functions as REST e
 that can be called via any HTTP client.
 
 Authentication to your published packages are handled via **API keychains** which
-are delegated via [Superuser](https://instant.chat).
+are delegated via [Superuser](https://superuser.app).
 
 **NOTE:** While in beta, only Superuser agents can use your published tools.
 We'll be opening up the gateway to programmatic access in the coming months.
@@ -44,7 +44,7 @@ Contributors welcome!
 
 ## Quickstart
 
-Visit [instant.chat/signup](https://instant.chat/signup) to register.
+Visit [superuser.app/signup](https://superuser.app/signup) to register.
 Creating a new bot is easy, you can then use this CLI to develop
 and publish custom packages to extend your bots.
 
@@ -100,7 +100,7 @@ for development purposes, you can use our lowest-tier model indefinitely in rate
 on the free tier **but only while on the web interface**.
 
 Tools cost money to run, and are billed as serverless functions
-at a rate of [$0.50 of credits per 1,000 GB-s](https://instant.chat/pricing) of usage.
+at a rate of [$0.50 of credits per 1,000 GB-s](https://superuser.app/pricing) of usage.
 Credits are prepaid, and during our beta period all users get a one-time bonus of $1.00
 in free usage credits.
 
@@ -112,7 +112,7 @@ For example, a function with 512 MB (0.5 GB) of RAM running for 200ms would use:
 
 # Building custom packages for your bots
 
-Building bots on [Superuser](https://instant.chat) is straightforward. Extending
+Building bots on [Superuser](https://superuser.app) is straightforward. Extending
 with custom tool packages can be done online via the web interface, or if you prefer
 working with your own editor, you can use this CLI.
 
@@ -273,7 +273,7 @@ to another user of the platform.
 
 # Roadmap
 
-There's a lot to build! [Superuser](https://instant.chat) is still in early beta. Coming soon;
+There's a lot to build! [Superuser](https://superuser.app) is still in early beta. Coming soon;
 
 - Deploy to Slack
 - Uploading image support
@@ -289,7 +289,7 @@ but feel free to bookmark all of these links.
 
 | Destination | Link |
 | ----------- | ---- |
-| Superuser | [instant.chat](https://instant.chat) |
+| Superuser | [superuser.app](https://superuser.app) |
 | GitHub | [github.com/instantbots](https://github.com/instantbots) |
 | Discord | [discord.gg/instant](https://discord.gg/instant) |
 | X / instantbots | [x.com/instantbots](https://x.com/instantbots) |
