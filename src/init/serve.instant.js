@@ -1,5 +1,5 @@
 /**
- * This file is ** NOT ** used in production on the Superuser package registry
+ * This file is ** NOT ** used in production on the Superuser toolkit registry
  * Any code you change here ** WILL NOT ** run when hosted with Superuser Package
  * 
  * However, it used for local development and allows you to ship your Superuser Package

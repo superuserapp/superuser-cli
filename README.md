@@ -1,8 +1,8 @@
 # Superuser Package Manager
 ## Extend AI agents with tools, instantly
 
-`ibot` is the official CLI for publishing [Superuser](https://superuser.app) packages.
-You can use this utility to publish new packages to the Superuser package registry,
+`sutr` is the official CLI for publishing [Superuser](https://superuser.app) packages.
+You can use this utility to publish new packages to the Superuser toolkit registry,
 available at [superuser.app/packages](https://superuser.app/packages).
 
 [Superuser](https://superuser.app) enables you to rapidly build custom
@@ -14,12 +14,12 @@ major features;
 3. Write your own private tool packages for your agents
 4. Deploy your agent to third-party services like Discord and Slack
 
-## What is the Superuser package registry?
+## What is the Superuser toolkit registry?
 
-The Superuser package registry is a **serverless hosting platform and registry** for
+The Superuser toolkit registry is a **serverless hosting platform and registry** for
 building tools that extend AI chatbots and agents.
 
-**Superuser packages are just REST API servers.**
+**Superuser toolkits are just REST API servers.**
 Every package is an [Instant API](https://github.com/instant-dev/api) project,
 which is a simple way to export and auto-document JavaScript functions as REST endpoints
 that can be called via any HTTP client.
@@ -32,14 +32,14 @@ We'll be opening up the gateway to programmatic access in the coming months.
 
 ## Superuser Package vs. MCP
 
-Reminder, **Superuser packages are just REST API servers.**
+Reminder, **Superuser toolkits are just REST API servers.**
 
 MCP, or Model Context Protocol, is a standard for passing tool and prompt context
-between AI models and service providers. Superuser packages are **not**
+between AI models and service providers. Superuser toolkits are **not**
 MCP compatible out of the box, as they are simply REST APIs. However, it is our goal to add
 MCP bindings to the [Instant API](https://github.com/instant-dev/api) framework which
-powers all Superuser packages. When formalized, this will allow you to use
-Superuser packages with any MCP-compatible client or service provider.
+powers all Superuser toolkits. When formalized, this will allow you to use
+Superuser toolkits with any MCP-compatible client or service provider.
 Contributors welcome!
 
 ## Quickstart
@@ -49,19 +49,19 @@ Creating a new bot is easy, you can then use this CLI to develop
 and publish custom packages to extend your bots.
 
 ```shell
-$ npm i sup -g
+$ npm i superuser.app -g
 $ mkdir new-project
 $ cd new-project
-$ sup init  # initialize project in this directory
-$ sup login # log in to Superuser package registry with your Superuser account
-$ sup serve # run your tool package on a local server to test
-$ sup run / # test a single endpoint (like curl)
-$ sup up    # publish to development environment
-$ sup up --env staging    # publish to staging environment
-$ sup up --env production # publish to production environment
+$ sutr init  # initialize project in this directory
+$ sutr login # log in to Superuser toolkit registry with your Superuser account
+$ sutr serve # run your tool package on a local server to test
+$ sutr run / # test a single endpoint (like curl)
+$ sutr publish    # publish to development environment
+$ sutr publish --env staging    # publish to staging environment
+$ sutr publish --env production # publish to production environment
 ```
 
-You can run `sup help` at any time to see available commands.
+You can run `sutr help` at any time to see available commands.
 
 # Table of contents
 
@@ -90,7 +90,7 @@ Tool packages are REST APIs that can be used by your agent. You can publish tool
 for use by your agent and others or keep them private.
 
 When you ask your agent a question that requires a tool call, Superuser will
-automatically route the request to the appropriate tool from the Superuser package registry
+automatically route the request to the appropriate tool from the Superuser toolkit registry
 and call the tool on your behalf.
 
 ## How is hosting billed?
@@ -118,27 +118,27 @@ working with your own editor, you can use this CLI.
 
 ## Initialize a project
 
-To initialize a new Superuser package:
+To initialize a new Superuser toolkit:
 
 ```shell
-$ npm i sup -g
+$ npm i sutr -g
 $ mkdir new-project
 $ cd new-project
-$ sup init
+$ sutr init
 ```
 
-You'll be walked through the process. The `ibot` CLI will automatically check for
+You'll be walked through the process. The `sutr` CLI will automatically check for
 updates to core packages, so make sure you update when available. To play around with your
-Superuser package locally;
+Superuser toolkit locally;
 
 ```shell
-$ sup serve
+$ sutr serve
 ```
 
 Will start an HTTP server. To execute a standalone endpoint / tool:
 
 ```shell
-$ sup run /
+$ sutr run /
 ```
 
 ### Defining tools aka endpoints
@@ -147,9 +147,9 @@ Defining custom tools is easy. You'll find the terms **tool** and
 **endpoint** used interchangeably as they all refer
 to the same thing: your bot executing custom code in the cloud.
 
-A **tool** is just an **endpoint** hosted by the Superuser package registry.
+A **tool** is just an **endpoint** hosted by the Superuser toolkit registry.
 
-All endpoints for Superuser packages live in the `functions/` directory.
+All endpoints for Superuser toolkits live in the `functions/` directory.
 Each file name maps to the endpoint route e.g. `functions/hello.js`
 routes to `localhost:8000/hello`. You can export custom `GET`, `POST`, `PUT`
 and `DELETE` functions from every file. Here's an example "hello world" endpoint:
@@ -173,7 +173,7 @@ your tool package.
 ### Endpoint name, description, types
 
 Using the comment block above every exported method (e.g. GET) you can
-define your endpoint. Superuser packages use an open source specification called
+define your endpoint. Superuser toolkits use an open source specification called
 [Instant API](https://github.com/instant-dev/api) to export JavaScript
 functions as type safe web APIs. You can learn more about how to properly
 define and document the shape (parameters) of your API there.
@@ -197,14 +197,14 @@ they will be billed from their balance.
 To deploy a public project to a `development` environment, you can use:
 
 ```shell
-$ sup up
+$ sutr publish
 ```
 
 You can also publish to `staging` and `production` using:
 
 ```shell
-$ sup up --env staging
-$ sup up --env production
+$ sutr publish --env staging
+$ sutr publish --env production
 ```
 
 ### Private packages
@@ -233,15 +233,15 @@ There are a few additional utilities you may find useful with this package;
 
 ```shell
 # generates functions/my-endpoint/example.js
-$ sup g:endpoint my-endpoint/example
+$ sutr g:endpoint my-endpoint/example
 ```
 
 ## Generate tests
 
 ```shell
 # Generate blank tests or ones for an endpoint
-$ sup g:test my_test # OR ...
-$ sup g:test --endpoint my-endpoint/example
+$ sutr g:test my_test # OR ...
+$ sutr g:test --endpoint my-endpoint/example
 ```
 
 ## Run tests
@@ -249,7 +249,7 @@ $ sup g:test --endpoint my-endpoint/example
 You can write tests for your tools to verify they work. Simply run;
 
 ```shell
-$ sup test
+$ sutr test
 ```
 
 And voila!

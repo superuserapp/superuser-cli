@@ -15,7 +15,7 @@ class RegisterCommand extends Command {
 
   help () {
     return {
-      description: 'Registers a new user account with the Superuser package registry',
+      description: 'Registers a new user account with the Superuser toolkit registry',
       args: [],
       flags: {},
       vflags: {}

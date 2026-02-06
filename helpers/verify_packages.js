@@ -17,13 +17,13 @@ module.exports = async (print = false) => {
   }
   const packages = [
     {
-      title: 'Superuser package manager',
+      title: 'Superuser toolkit registry',
       name: pkgs.self.name,
       version: pkgs.self.version,
       global: true
     },
     {
-      title: 'Superuser package gateway (Instant API)',
+      title: 'Superuser toolkit gateway (Instant API)',
       name: pkgs.api ? pkgs.api.name : null,
       version: pkgs.api ? pkgs.api.version : null,
       dev: true
@@ -63,7 +63,7 @@ module.exports = async (print = false) => {
       drawBox.center(
         `yellow`,
         ``,
-        `Updates are available for ${colors.bold('ibot')}:`,
+        `Updates are available for ${colors.bold('sutr')}:`,
         ``,
         ...updatePackages.map(pkg => {
           return [

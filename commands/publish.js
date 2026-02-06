@@ -19,7 +19,7 @@ const DEFAULT_IGNORE = [
   '.git',               // do not deploy git history
   '.DS_Store',          // do not deploy macOS files
   'package-lock.json',  // deps installed from package.json
-  'serve.instant.js'     // not used by Superuser package registry; irrelevant
+  'serve.instant.js'     // not used by Superuser toolkit registry; irrelevant
 ];
 
 function formatSize (size) {
@@ -81,7 +81,7 @@ class UpCommand extends Command {
 
   help () {
     return {
-      description: 'Deploys your toolkit to the Superuser package registry',
+      description: 'Deploys your toolkit to the Superuser toolkit registry',
       args: [],
       flags: {
         v: 'Verbose mode; print full details of packaging'
@@ -130,9 +130,9 @@ class UpCommand extends Command {
     console.log();
 
     !fs.existsSync('/tmp') && fs.mkdirSync('/tmp');
-    !fs.existsSync('/tmp/ibot') && fs.mkdirSync('/tmp/ibot', 0o777);
+    !fs.existsSync('/tmp/sutr') && fs.mkdirSync('/tmp/sutr', 0o777);
     const tmpName = name.replace(/\//g, '.');
-    const tmpPath = `/tmp/ibot/${tmpName}.${new Date().valueOf()}.tar.gz`;
+    const tmpPath = `/tmp/sutr/${tmpName}.${new Date().valueOf()}.tar.gz`;
 
     const t0 = new Date().valueOf();
 
@@ -140,9 +140,9 @@ class UpCommand extends Command {
     const pack = tar.pack();
 
     let ignore = DEFAULT_IGNORE.slice();
-    if (fs.existsSync(path.join(process.cwd(), '.ibotignore'))) {
+    if (fs.existsSync(path.join(process.cwd(), '.sutrignore'))) {
       ignore = ignore.concat(
-        fs.readFileSync(path.join(process.cwd(), '.ibotignore')).toString()
+        fs.readFileSync(path.join(process.cwd(), '.sutrignore')).toString()
           .split('\n')
           .map(line => line.trim())
           .filter(line => !!line && !line.trim().startsWith('#'))
