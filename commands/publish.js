@@ -204,16 +204,13 @@ class UpCommand extends Command {
         {
           name: name,
           environment: env,
-          timeout: Math.max(1, Math.min(parseInt(functJSON.timeout) || 0), 900),
           tarball: {_base64: result.toString('base64')},
           _stream: true
         },
         ({event, data, id}) => {
           if (event === '@response') {
-            let result = {};
+            let result = data;
             try {
-              result = JSON.parse(data);
-              console.log(`got response?`, typeof result, result);
               result.data = JSON.parse(data.body);
             } catch (e) {
               // do nothing;
@@ -227,7 +224,6 @@ class UpCommand extends Command {
     });
 
     if (upResult.statusCode !== 200) {
-      console.log(typeof upResult, upResult);
       if (upResult.data && upResult.data.error && upResult.data.error.message) {
         throw new Error(upResult.data.error.message);
       } else {
@@ -243,11 +239,15 @@ class UpCommand extends Command {
     }
 
     const url = upResult.data.version_urls[env];
+    const registryUrl = upResult.data.registry_urls?.[env];
     const time = new Date().valueOf() - t0;
 
     console.log();
     console.log(`${colors.bold.green('Success:')} ${colors.bold(name)} deployed to ${colors.bold.grey(env)} in ${time} ms!`);
-    console.log(` => ${colors.bold.blue(url)}`);
+    if (registryUrl) {
+      console.log(` Registry URL => ${colors.bold.blue(registryUrl)}`);
+    }
+    console.log(` Web URL      => ${colors.bold.blue(url)}`);
     console.log();
 
     return void 0;
