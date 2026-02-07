@@ -292,5 +292,5 @@ but feel free to bookmark all of these links.
 | Superuser | [superuser.app](https://superuser.app) |
 | GitHub | [github.com/superuserapp](https://github.com/superuserapp) |
 | Discord | [discord.gg/superuser](https://discord.gg/superuser) |
-| X / instantbots | [x.com/instantbots](https://x.com/instantbots) |
+| X / @super_user_app | [x.com/super_user_app](https://x.com/super_user_app) |
 | X / Keith Horwood | [x.com/keithwhor](https://x.com/keithwhor) |
