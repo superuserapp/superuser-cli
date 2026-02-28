@@ -178,6 +178,7 @@ class InitCommand extends Command {
     writeInitFiles(filesRoot);
     // Write package.json: make sure no publish to npm
     fileWriter.writeJSON('package.json', 'private', true);
+    fileWriter.writeJSON('package.json', 'type', 'module');
     // Write superuser.json: default is public
     fileWriter.writeJSON('superuser.json', 'name', functName);
 
