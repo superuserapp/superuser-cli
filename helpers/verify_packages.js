@@ -63,7 +63,7 @@ module.exports = async (print = false) => {
       drawBox.center(
         `yellow`,
         ``,
-        `Updates are available for ${colors.bold('sutr')}:`,
+        `Updates are available for ${colors.bold('supr')}:`,
         ``,
         ...updatePackages.map(pkg => {
           return [

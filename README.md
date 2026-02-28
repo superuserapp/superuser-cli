@@ -1,7 +1,7 @@
 # Superuser Package Manager
 ## Extend AI agents with tools, instantly
 
-`sutr` is the official CLI for publishing [Superuser](https://superuser.app) packages.
+`supr` is the official CLI for publishing [Superuser](https://superuser.app) packages.
 You can use this utility to publish new packages to the Superuser toolkit registry,
 available at [superuser.app/packages](https://superuser.app/packages).
 
@@ -52,16 +52,16 @@ and publish custom packages to extend your bots.
 $ npm i superuser.app -g
 $ mkdir new-project
 $ cd new-project
-$ sutr init  # initialize project in this directory
-$ sutr login # log in to Superuser toolkit registry with your Superuser account
-$ sutr serve # run your tool package on a local server to test
-$ sutr run / # test a single endpoint (like curl)
-$ sutr publish    # publish to development environment
-$ sutr publish --env staging    # publish to staging environment
-$ sutr publish --env production # publish to production environment
+$ supr init  # initialize project in this directory
+$ supr login # log in to Superuser toolkit registry with your Superuser account
+$ supr serve # run your tool package on a local server to test
+$ supr run / # test a single endpoint (like curl)
+$ supr publish    # publish to development environment
+$ supr publish --env staging    # publish to staging environment
+$ supr publish --env production # publish to production environment
 ```
 
-You can run `sutr help` at any time to see available commands.
+You can run `supr help` at any time to see available commands.
 
 # Table of contents
 
@@ -121,24 +121,24 @@ working with your own editor, you can use this CLI.
 To initialize a new Superuser toolkit:
 
 ```shell
-$ npm i sutr -g
+$ npm i supr -g
 $ mkdir new-project
 $ cd new-project
-$ sutr init
+$ supr init
 ```
 
-You'll be walked through the process. The `sutr` CLI will automatically check for
+You'll be walked through the process. The `supr` CLI will automatically check for
 updates to core packages, so make sure you update when available. To play around with your
 Superuser toolkit locally;
 
 ```shell
-$ sutr serve
+$ supr serve
 ```
 
 Will start an HTTP server. To execute a standalone endpoint / tool:
 
 ```shell
-$ sutr run /
+$ supr run /
 ```
 
 ### Defining tools aka endpoints
@@ -197,14 +197,14 @@ they will be billed from their balance.
 To deploy a public project to a `development` environment, you can use:
 
 ```shell
-$ sutr publish
+$ supr publish
 ```
 
 You can also publish to `staging` and `production` using:
 
 ```shell
-$ sutr publish --env staging
-$ sutr publish --env production
+$ supr publish --env staging
+$ supr publish --env production
 ```
 
 ### Private packages
@@ -233,15 +233,15 @@ There are a few additional utilities you may find useful with this package;
 
 ```shell
 # generates functions/my-endpoint/example.js
-$ sutr g:endpoint my-endpoint/example
+$ supr g:endpoint my-endpoint/example
 ```
 
 ## Generate tests
 
 ```shell
 # Generate blank tests or ones for an endpoint
-$ sutr g:test my_test # OR ...
-$ sutr g:test --endpoint my-endpoint/example
+$ supr g:test my_test # OR ...
+$ supr g:test --endpoint my-endpoint/example
 ```
 
 ## Run tests
@@ -249,7 +249,7 @@ $ sutr g:test --endpoint my-endpoint/example
 You can write tests for your tools to verify they work. Simply run;
 
 ```shell
-$ sutr test
+$ supr test
 ```
 
 And voila!
