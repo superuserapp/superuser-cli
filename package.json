@@ -1,6 +1,6 @@
 {
   "name": "superuser.app",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Superuser toolkit registry: command line interface for building toolkits for your agents",
   "main": "index.js",
   "files": [
