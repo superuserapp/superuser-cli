@@ -14,6 +14,9 @@ import dotenv from 'dotenv';
 import cluster from 'cluster';
 import os from 'os';
 
+// config
+import config from './superuser.json' with { type: 'json' };
+
 // Shorthand references
 const Daemon = InstantAPI.Daemon;
 const Gateway = InstantAPI.Daemon.Gateway;
@@ -39,7 +42,8 @@ if (cluster.isPrimary) {
   // Individual webserver startup
   const gateway = new Gateway({
     name: 'SuperuserDaemon.Gateway',
-    debug: ENVIRONMENT !== 'production'
+    debug: ENVIRONMENT !== 'production',
+    defaultTimeout: (parseInt(config.timeout) || 10) * 1_000
   });
   // Optional: Enable Sentry or another error reporting tool
   // gateway.setErrorHandler(err => Sentry.captureException(err));
