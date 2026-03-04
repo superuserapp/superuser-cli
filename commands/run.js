@@ -268,6 +268,7 @@ class RunCommand extends Command {
             if (json.error.stack) {
               error.stack = json.error.stack;
             }
+            console.log(JSON.stringify(json, null, 2));
             throw error;
           }
         }
