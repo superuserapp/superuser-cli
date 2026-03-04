@@ -74,7 +74,7 @@ class InitCommand extends Command {
     console.log(
       drawBox.center(
         `blue`,
-        `Welcome to ${colors.bold.green('🤖 Superuser')}!`,
+        `Welcome to ${colors.bold.green('🐥 Superuser')}!`,
       )
     );
 
