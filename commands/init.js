@@ -202,9 +202,9 @@ class InitCommand extends Command {
         ``,
         `For more information about ${colors.bold(`Superuser`)}:`,
         `     Home    => ${colors.bold.underline.blue('https://superuser.app')}`,
-        `     GitHub  => ${colors.bold.underline.blue('https://github.com/instantbots')}`,
-        `     Discord => ${colors.bold.underline.blue('https://discord.gg/instant')}`,
-        `     X       => ${colors.bold.underline.blue('https://x.com/instantbots')}`,
+        `     GitHub  => ${colors.bold.underline.blue('https://github.com/superuserapp')}`,
+        `     Discord => ${colors.bold.underline.blue('https://discord.gg/superuser')}`,
+        `     X       => ${colors.bold.underline.blue('https://x.com/super_user_app')}`,
         ``,
         colors.green.bold(`Happy building! :)`),
         ``
