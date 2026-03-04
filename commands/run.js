@@ -89,6 +89,8 @@ class RunCommand extends Command {
 
   async run(params) {
 
+    const { default: terminalImage } = await import('terminal-image');
+
     // Use 8199 for test runs
     const InstantPackage = await loadPackage(params, true);
     const basePort = 8199;
@@ -208,15 +210,15 @@ class RunCommand extends Command {
         bodyParams,
         ({id, event, data}) => {
           if (event === '@response') {
-            let json = JSON.parse(data);
+            let json = JSON.parse(data.split('\n').join(''));
             result = json;
           } else if (event === '@stdout') {
-            let json = JSON.parse(data);
+            let json = JSON.parse(data.split('\n').join(''));
             json.split('\n').forEach(line => {
               console.log(colors.grey(`${params.flags.v ? colors.bold(`stdout> `) : ''}${line}`));
             });
           } else if (event === '@stderr') {
-            let json = JSON.parse(data);
+            let json = JSON.parse(data.split('\n').join(''));
             json.split('\n').forEach(line => {
               console.log(colors.yellow(`${params.flags.v ? colors.bold(`stderr> `) : ''}${line}`));
             });
@@ -260,9 +262,33 @@ class RunCommand extends Command {
         console.log(colors.bold.green('result:'));
       }
       if (json) {
-        console.log(JSON.stringify(json, null, 2));
+        if (result.statusCode.toString()[0] !== '2') {
+          if (json.error) {
+            const error = new Error(json.error.message);
+            if (json.error.stack) {
+              error.stack = json.error.stack;
+            }
+            throw error;
+          }
+        }
+        if (
+          result.headers['Content-Type']?.startsWith('image/') &&
+          json._base64
+        ) {
+          const imageBuffer = Buffer.from(json._base64, 'base64');
+          const image = await terminalImage.buffer(imageBuffer, { width: '60%' });
+          console.log(image);
+        } else {
+          console.log(JSON.stringify(json, null, 2));
+        }
       } else {
-        console.log(body);
+        if (result.headers['Content-Type']?.startsWith('image/')) {
+          const imageBuffer = Buffer.from(body);
+          const image = await terminalImage.buffer(imageBuffer, { width: '60%' });
+          console.log(image);
+        } else {
+          console.log(body);
+        }
       }
     } finally {
       if (proc && proc.pid) {
