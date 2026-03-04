@@ -238,8 +238,17 @@ class UpCommand extends Command {
       throw error;
     }
 
-    const url = upResult.data.version_urls[env];
-    const registryUrl = upResult.data.registry_urls?.[env];
+    let urlEnv = env;
+    if (!upResult.data.version_urls[env]) {
+      const keys = Object.keys(upResult.data.version_urls);
+      const key = keys.find(key => key.startsWith('v-'));
+      if (key) {
+        urlEnv = key;
+      }
+    }
+
+    const url = upResult.data.version_urls[urlEnv];
+    const registryUrl = upResult.data.registry_urls?.[urlEnv];
     const time = new Date().valueOf() - t0;
 
     console.log();
