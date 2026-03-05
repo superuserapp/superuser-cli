@@ -229,19 +229,41 @@ class RunCommand extends Command {
       );
 
       // Handle non-event errors given by server
-      if (streamResult.statusCode === 500) {
+      if (streamResult.statusCode === 500 || streamResult.statusCode === 501 || streamResult.statusCode === 404) {
         const errorBody = streamResult.body.toString();
         let errorMessage = errorBody;
-        // cut out the "Application Error: " prefix and only capture the first line
-        if (errorBody.startsWith('Application Error:')) {
-          errorMessage = errorBody.slice('Application Error: '.length);
+        let json = null;
+        try {
+          json = JSON.parse(errorBody);
+        } catch (e) {
+          // do nothing
+        
         }
-        // ignore the stack trace
-        const stack = errorMessage;
-        errorMessage = stack.split('\n')[0];
-        const error = new Error(errorMessage);
-        error.stack = stack;
-        throw error;
+        if (json) {
+          if (json.error) {
+            errorMessage = json.error.message;
+            const error = new Error(errorMessage);
+            if (json.error.stack) {
+              error.stack = json.error.stack;
+            }
+            throw error;
+          } else if (json.message) {
+            throw new Error(json.message);
+          } else {
+            throw new Error(errorMessage);
+          }
+        } else {
+          // cut out the "Application Error: " prefix and only capture the first line
+          if (errorBody.startsWith('Application Error:')) {
+            errorMessage = errorBody.slice('Application Error: '.length);
+          }
+          // ignore the stack trace
+          const stack = errorMessage;
+          errorMessage = stack.split('\n')[0];
+          const error = new Error(errorMessage);
+          error.stack = stack;
+          throw error;
+        }
       }
 
       // retrieve details
