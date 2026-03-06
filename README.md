@@ -52,16 +52,16 @@ and publish custom packages to extend your bots.
 $ npm i superuser.app -g
 $ mkdir new-project
 $ cd new-project
-$ supr init  # initialize project in this directory
-$ supr login # log in to Superuser toolkit registry with your Superuser account
-$ supr serve # run your tool package on a local server to test
-$ supr run / # test a single endpoint (like curl)
-$ supr publish    # publish to development environment
-$ supr publish --env staging    # publish to staging environment
-$ supr publish --env production # publish to production environment
+$ sup init  # initialize project in this directory
+$ sup login # log in to Superuser toolkit registry with your Superuser account
+$ sup serve # run your tool package on a local server to test
+$ sup run / # test a single endpoint (like curl)
+$ sup publish    # publish to development environment
+$ sup publish --env staging    # publish to staging environment
+$ sup publish --env production # publish to production environment
 ```
 
-You can run `supr help` at any time to see available commands.
+You can run `sup help` at any time to see available commands.
 
 # Table of contents
 
@@ -121,10 +121,10 @@ working with your own editor, you can use this CLI.
 To initialize a new Superuser toolkit:
 
 ```shell
-$ npm i supr -g
+$ npm i sup -g
 $ mkdir new-project
 $ cd new-project
-$ supr init
+$ sup init
 ```
 
 You'll be walked through the process. The `supr` CLI will automatically check for
@@ -132,13 +132,13 @@ updates to core packages, so make sure you update when available. To play around
 Superuser toolkit locally;
 
 ```shell
-$ supr serve
+$ sup serve
 ```
 
 Will start an HTTP server. To execute a standalone endpoint / tool:
 
 ```shell
-$ supr run /
+$ sup run /
 ```
 
 ### Defining tools aka endpoints
@@ -197,14 +197,14 @@ they will be billed from their balance.
 To deploy a public project to a `development` environment, you can use:
 
 ```shell
-$ supr publish
+$ sup publish
 ```
 
 You can also publish to `staging` and `production` using:
 
 ```shell
-$ supr publish --env staging
-$ supr publish --env production
+$ sup publish --env staging
+$ sup publish --env production
 ```
 
 ### Private packages
@@ -233,15 +233,15 @@ There are a few additional utilities you may find useful with this package;
 
 ```shell
 # generates functions/my-endpoint/example.js
-$ supr g:endpoint my-endpoint/example
+$ sup g:endpoint my-endpoint/example
 ```
 
 ## Generate tests
 
 ```shell
 # Generate blank tests or ones for an endpoint
-$ supr g:test my_test # OR ...
-$ supr g:test --endpoint my-endpoint/example
+$ sup g:test my_test # OR ...
+$ sup g:test --endpoint my-endpoint/example
 ```
 
 ## Run tests
@@ -249,7 +249,7 @@ $ supr g:test --endpoint my-endpoint/example
 You can write tests for your tools to verify they work. Simply run;
 
 ```shell
-$ supr test
+$ sup test
 ```
 
 And voila!

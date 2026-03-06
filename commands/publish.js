@@ -140,9 +140,9 @@ class UpCommand extends Command {
     const pack = tar.pack();
 
     let ignore = DEFAULT_IGNORE.slice();
-    if (fs.existsSync(path.join(process.cwd(), '.suprignore'))) {
+    if (fs.existsSync(path.join(process.cwd(), '.supignore'))) {
       ignore = ignore.concat(
-        fs.readFileSync(path.join(process.cwd(), '.suprignore')).toString()
+        fs.readFileSync(path.join(process.cwd(), '.supignore')).toString()
           .split('\n')
           .map(line => line.trim())
           .filter(line => !!line && !line.trim().startsWith('#'))
