@@ -6,7 +6,7 @@ const TestEngine = InstantAPI.TestEngine;
 const PORT = 7357; // Leetspeak for "TEST"; can be anything
 
 // (1) Load environment variables; make sure NODE_ENV is "test"
-dotenv.config({path: `.env.test`});
+dotenv.config({ path: `.env.test` });
 process.env.NODE_ENV = `test`;
 
 // (2) Initialize and load tests; set PORT for request mocking
@@ -24,6 +24,7 @@ await testEngine.setup(async () => {
   // Start Gateway; {debug: true} will print logs
   const gateway = new Gateway({debug: false});
 
+  // Mock keychain keys
   const createContext = gateway.createContext.bind(gateway);
   gateway.createContext = function createContextIntercept (req, definition, params, data, buffer) {
     const testKeychain = {};

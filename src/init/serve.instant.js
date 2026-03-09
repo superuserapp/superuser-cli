@@ -50,6 +50,20 @@ if (cluster.isPrimary) {
   const et = new EncryptionTools();
   dotenv.config();                   // load env vars
   et.decryptProcessEnv(process.env); // decrypt env vars, if necessary
+
+  // Mock keychain keys
+  const createContext = gateway.createContext.bind(gateway);
+  gateway.createContext = function createContextIntercept (req, definition, params, data, buffer) {
+    const testKeychain = {};
+    const envKeys = Object.keys(process.env).filter(key => key.startsWith('__KEYCHAIN__'));
+    for (const envKey of envKeys) {
+      const key = envKey.slice('__KEYCHAIN__'.length);
+      testKeychain[key] = process.env[envKey];
+    }
+    data.keychain_keys = testKeychain;
+    return createContext(req, definition, params, data, buffer);
+  }
+
   gateway.load(process.cwd());       // load routes from filesystem
   gateway.listen(PORT);              // start server
 
