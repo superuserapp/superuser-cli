@@ -193,6 +193,16 @@ class RunCommand extends Command {
         })()
       ]);
 
+      if (method === 'post' || method === 'put') {
+        for (const key in functionParams) {
+          try {
+            functionParams[key] = JSON.parse(functionParams[key]);
+          } catch (e) {
+            // do nothing
+          }
+        }
+      }
+
       const queryParams = (method === 'get' || method === 'delete')
         ? { ...functionParams }
         : {};
@@ -206,7 +216,7 @@ class RunCommand extends Command {
         method.toUpperCase(),
         `${url}/${pathname}`,
         queryParams,
-        {},
+        method === 'get' || method === 'delete' ? {} : { 'Content-Type': 'application/json' },
         bodyParams,
         ({id, event, data}) => {
           if (event === '@response') {
@@ -228,8 +238,10 @@ class RunCommand extends Command {
         }
       );
 
+      const statusCode = streamResult.statusCode.toString();
+
       // Handle non-event errors given by server
-      if (streamResult.statusCode === 500 || streamResult.statusCode === 501 || streamResult.statusCode === 404) {
+      if (statusCode[0] === '4' || statusCode[0] === '5') {
         const errorBody = streamResult.body.toString();
         let errorMessage = errorBody;
         let json = null;
