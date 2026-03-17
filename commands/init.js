@@ -192,7 +192,7 @@ class InitCommand extends Command {
       drawBox.left(
         `green`,
         ``,
-        colors.bold.green(`Success:`) + ` Instant tool package initialized!`,
+        colors.bold.green(`Success:`) + ` Superuser tool package initialized!`,
         `Here are some helpful commands to get started:`,
         ``,
         `(1) Create a set of endpoints for a path (create, read, update, destroy):`,
