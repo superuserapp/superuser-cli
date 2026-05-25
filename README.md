@@ -3,14 +3,13 @@
 
 `supr` is the official CLI for publishing [Superuser](https://superuser.app) packages.
 You can use this utility to publish new packages to the Superuser toolkit registry,
-available at [superuser.app/packages](https://superuser.app/packages).
+available at [superuser.app/toolkits](https://superuser.app/toolkits).
 
-[Superuser](https://superuser.app) enables you to rapidly build custom
-chatbots and AI agents that can be extended with custom tools. It provides four
-major features;
+[Superuser](https://superuser.app) enables you to build your own Superusers:
+AI agents that can be extended with custom tools. It provides four major features;
 
 1. Chat with and develop your agent in real time from the web
-2. Extend your agent with [hosted tool packages](https://superuser.app/packages)
+2. Extend your agent with [hosted tool packages](https://superuser.app/toolkits)
 3. Write your own private tool packages for your agents
 4. Deploy your agent to third-party services like Discord and Slack
 
@@ -27,20 +26,9 @@ that can be called via any HTTP client.
 Authentication to your published packages are handled via **API keychains** which
 are delegated via [Superuser](https://superuser.app).
 
-**NOTE:** While in beta, only Superuser agents can use your published tools.
-We'll be opening up the gateway to programmatic access in the coming months.
-
 ## Superuser Package vs. MCP
 
-Reminder, **Superuser toolkits are just REST API servers.**
-
-MCP, or Model Context Protocol, is a standard for passing tool and prompt context
-between AI models and service providers. Superuser toolkits are **not**
-MCP compatible out of the box, as they are simply REST APIs. However, it is our goal to add
-MCP bindings to the [Instant API](https://github.com/instant-dev/api) framework which
-powers all Superuser toolkits. When formalized, this will allow you to use
-Superuser toolkits with any MCP-compatible client or service provider.
-Contributors welcome!
+We also provide **MCP bindings** for each package, available on its registry page.
 
 ## Quickstart
 
@@ -72,14 +60,14 @@ You can run `sup help` at any time to see available commands.
       1. [Defining tools aka endpoints](#defining-tools-aka-endpoints)
       1. [Endpoint name, description, types](#endpoint-name-description-types)
    1. [Deploy an Superuser Package](#deploy-an-instant-tool-package)
-      1. [Public packages](#public-packages)
       1. [Private packages](#private-packages)
+      1. [Public packages](#public-packages)
+      1. [Open source packages](#open-source-packages)
 1. [Additional utilities](#additional-utilities)
    1. [Generate endpoints](#generate-endpoints)
    1. [Generate tests](#generate-tests)
    1. [Run tests](#run-tests)
    1. [Environment variables](#environment-variables)
-1. [Roadmap](#roadmap)
 1. [Contact](#contact)
 
 # How does Superuser work?
@@ -100,15 +88,15 @@ for development purposes, you can use our lowest-tier model indefinitely in rate
 on the free tier **but only while on the web interface**.
 
 Tools cost money to run, and are billed as serverless functions
-at a rate of [$0.50 of credits per 1,000 GB-s](https://superuser.app/pricing) of usage.
-Credits are prepaid, and during our beta period all users get a one-time bonus of $1.00
-in free usage credits.
+at a rate of [50 of credits per 1,000 GB-s](https://superuser.app/pricing) of usage.
+Credits are prepaid, and during our beta period all users get a one-time bonus of 100 free usage credits.
+It costs $7.00 USD for 500 credits, with discounts for larger credit purchases.
 
 GB-s represents a "gigabyte-second" and is calculated by the function RAM × execution time.
 For example, a function with 512 MB (0.5 GB) of RAM running for 200ms would use:
 
 - Used GB-s = 0.5GB × 0.2s = 0.1 GB-s
-- Used credits = $0.50 / 1,000 GB-s × 0.1 GB-s = $0.00005
+- Used credits = 50 / 1,000 GB-s × 0.1 GB-s = 0.005 credits (about $0.00007)
 
 # Building custom packages for your bots
 
@@ -178,23 +166,22 @@ define your endpoint. Superuser toolkits use an open source specification called
 functions as type safe web APIs. You can learn more about how to properly
 define and document the shape (parameters) of your API there.
 
-## Deploy an Superuser Package
+## Deploy a Superuser Package
 
-### Public packages
+### Private packages
 
-**NOTE:** You **will not** be charged for other people using your public actions.
-They are billed directly from their account.
+Private packages can only be viewed and executed by the organization that created them.
 
-By default all packages are created as public projects. Public
-projects are namespaced to your username, e.g. `@my-username/project`.
+**Private package source code is not visible** and can only be viewed when using our command
+line tools to download a project.
+
+By default all packages are created with visibility set to private.
+Packages are namespaced to your username, e.g. `@my-username/project`.
 This can be found in the `"name"` field of `superuser.json`.
 
-Note that the code for public projects will be shared publicly for anybody
-to see, and the expectation is that others can use this code in their bots
-as well.
-they will be billed from their balance.
+Your credit balance will be charged directly for use of private packages.
 
-To deploy a public project to a `development` environment, you can use:
+To deploy a private project to a `development` environment, you can use:
 
 ```shell
 $ sup publish
@@ -207,23 +194,33 @@ $ sup publish --env staging
 $ sup publish --env production
 ```
 
-### Private packages
+### Public packages
 
-**NOTE:** You **_WILL_** be charged by anybody accessing your private
-packages. However, all code and endpoints will not be publicly available;
-you must share the URL with somebody in order for them to use it.
+Public packages can be viewed and executed by anybody.
 
-You can publish private project by prepending `private/` on the
-`"name"` field in `superuser.json`, e.g.
+**Public package source code is not visible**, but the tools themselves are available for others to use.
+You would create a public package for a proprietary tool, say custom image generation, that you
+want the public to be able to use but not see the code for.
 
-```json
-{
-  "name": "private/@my-username/private-package"
-}
-```
+You **will not** be charged for other people using your public tools.
+They are billed directly from their account.
 
-You then deploy as normal. These packages will be visible by you in the
-registry but nobody else.
+You can change your package to `public` by changing its settings on Superuser at:
+`https://superuser.app/org/{your-org}/{name}`
+
+### Open source packages
+
+Open source packages can be viewed and executed by anybody.
+
+**Open source package source code is visible** and API keys can be shared with these packages.
+You would create an open source package for a tool that requires third-party API keys to use
+successfully: mostly for B2B tools like Stripe, HubSpot, etc.
+
+You **will not** be charged for other people using your open source tools.
+They are billed directly from their account.
+
+You can change your package to `open source` by changing its settings on Superuser at:
+`https://superuser.app/org/{your-org}/{name}`
 
 # Additional utilities
 
@@ -271,17 +268,6 @@ if you ever return them in an endpoint response, or connect to
 sensitive data, there's a chance you may expose that information
 to another user of the platform.
 
-# Roadmap
-
-There's a lot to build! [Superuser](https://superuser.app) is still in early beta. Coming soon;
-
-- Deploy to Slack
-- Uploading image support
-- Knowledge bases
-- Much more!
-
-Submit requests via Discord at [discord.gg/superuser](https://discord.gg/superuser)!
-
 # Contact
 
 The best place for help and support is Discord at [discord.gg/superuser](https://discord.gg/superuser),
@@ -294,3 +280,4 @@ but feel free to bookmark all of these links.
 | Discord | [discord.gg/superuser](https://discord.gg/superuser) |
 | X / @super_user_app | [x.com/super_user_app](https://x.com/super_user_app) |
 | X / Keith Horwood | [x.com/keithwhor](https://x.com/keithwhor) |
+| X / Scott Gamble | [x.com/threesided](https://x.com/threesided) |
